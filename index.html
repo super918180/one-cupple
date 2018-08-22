@@ -139,8 +139,7 @@
         });
         var data = getValue();
         try {
-            // let url = 'https://story.cuppieme.com.cn/index';
-            let url = 'https://www.easy-mock.com/mock/5b7cd4ebc00f650b09885966/test';
+            let url = 'https://story.cuppieme.com.cn/index';
             $.post(url + '/record', {
                 nickname: data.name,
                 city: data.city,
@@ -151,6 +150,7 @@
                 if (res.code === 200) {
                     location.href = './result.html'
                 } else {
+                    drop();
                     $(document).dialog({
                         type: 'notice',
                         infoText: res.msg,
