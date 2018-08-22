@@ -32,6 +32,7 @@
     min-height: .13rem /* 10/75 */;
     background-color: #fefefe;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .ui-select-trigger i {
@@ -50,6 +51,8 @@
     padding: 0;
     margin: 0;
     color: #666;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 .ui-select-content li {

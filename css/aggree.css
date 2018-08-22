@@ -47,6 +47,7 @@
     height: 8rem /* 600/75 */;
     margin: auto;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
     text-align: left;
     -webkit-user-select: none;
     -moz-user-select: none;

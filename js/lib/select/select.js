@@ -7,7 +7,7 @@
  * Time: 11:34:25
  * Contact: 55342775@qq.com
  */
-(function(root, factory) {
+(function (root, factory) {
 	//amd
 	if (typeof define === 'function' && define.amd) {
 		define(['$'], factory);
@@ -16,10 +16,10 @@
 	} else {
 		root.Select = factory(window.Zepto || window.jQuery || $);
 	}
-})(this, function($) {
-	$.fn.Select = function(settings) {
+})(this, function ($) {
+	$.fn.Select = function (settings) {
 		var arr = [];
-		$(this).each(function() {
+		$(this).each(function () {
 			var options = $.extend({
 				target: this,
 				maxHeight: 200,
@@ -38,7 +38,7 @@
 		this.id = 'sel_' + (+new Date()).toString().substr(-8) + rnd;
 	}
 	Select.prototype = {
-		init: function(settings) {
+		init: function (settings) {
 			this.settings = $.extend({
 				target: null,
 				selected: null,
@@ -51,7 +51,7 @@
 			this.create();
 			this.bindEvent();
 		},
-		create: function() {
+		create: function () {
 			this.w = this.settings.width || this.target.width();
 			this.h = this.settings.height || this.target.height();
 			this.trigger = $('<div class="ui-select-trigger"><span></span><i></i></div>');
@@ -74,18 +74,18 @@
 			this.format();
 			this.target.hide();
 		},
-		setData: function(model) {
+		setData: function (model) {
 			this.model = model;
 			this.format();
 		},
-		render: function() {
+		render: function () {
 			this.format();
 		},
-		format: function() {
+		format: function () {
 			var _this = this;
 			if (!this.settings.model && this.model.length == 0) {
 				this.model = [];
-				this.target.find('option').each(function() {
+				this.target.find('option').each(function () {
 					var o = {
 						value: $(this).attr('value'),
 						text: $(this).html(),
@@ -108,13 +108,14 @@
 			var str = '';
 			for (var i = 0, l = _this.model.length; i < l; i++) {
 				var item = _this.model[i];
-				var cls = '';
+				var cls = 'ui-select-item';
 				if (item.disabled) {
 					cls += ' ui-select-item-disabled';
 				}
 				str += '<li class="' + cls + '" data-text="' + _this.escape(item.text) + '" data-value="' + _this.escape(item.value) + '" title="' + _this.escape(item.text) + '">' + item.text + '</li>';
 			}
 			_this.selectContent.html(str);
+			_this.selectContent.css('max-height', _this.h * 5)
 			_this.selectContent.children('li').height(_this.h).css('lineHeight', _this.h + 'px');
 			var v = this.target.val();
 			if (typeof this.target[0].value == 'undefined') {
@@ -123,12 +124,12 @@
 			_this.value = v;
 			this.setValue(v);
 		},
-		escape: function(v) {
+		escape: function (v) {
 			return v.toString().replace(/\'/igm, "&apos;").replace(/\"/igm, "&quot;")
 		},
-		setValue: function(val, txt) {
+		setValue: function (val, txt) {
 			var _this = this;
-			this.selectContent.find('li').each(function() {
+			this.selectContent.find('li').each(function () {
 				if ($(this).data('value') == val) {
 					var txt = txt || $(this).data('text');
 					_this.trigger.children('span').attr('title', txt).text(txt);
@@ -146,10 +147,10 @@
 				}
 			})
 		},
-		bindEvent: function() {
+		bindEvent: function () {
 			var _this = this;
 			_this.status = false;
-			this.trigger.on('click', function() {
+			this.trigger.on('click', function () {
 				if (!_this.disabled) {
 					$('.ui-select').not('#' + _this.id).trigger('hide');
 					if (!_this.status) {
@@ -160,10 +161,10 @@
 				}
 				return false;
 			});
-			_this.target.on('set',function(e,v){
+			_this.target.on('set', function (e, v) {
 				_this.setValue(v)
 			});
-			this.select.on('click', 'li', function() {
+			this.select.on('click', 'li', function () {
 				if (!$(this).hasClass('ui-select-item-disabled')) {
 					var val = $(this).data('value');
 					var txt = $(this).data('text')
@@ -172,14 +173,14 @@
 				}
 				return false;
 			});
-			this.select.on('hide', function() {
+			this.select.on('hide', function () {
 				_this.hide();
 			});
-			$(document).click(function() {
+			$(document).click(function () {
 				_this.hide();
 			})
 		},
-		show: function() {
+		show: function () {
 			this.settings.beforeShow && this.settings.beforeShow.call(this, this.trigger, this.target);
 			this.trigger.addClass('active');
 			var pos = this.trigger.offset();
@@ -193,7 +194,7 @@
 			}).show();
 			this.status = true;
 		},
-		hide: function() {
+		hide: function () {
 			this.trigger.removeClass('active');
 			this.status = false;
 			this.select.hide();
