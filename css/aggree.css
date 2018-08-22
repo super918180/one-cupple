@@ -3,7 +3,7 @@
 }
 .g-modal-mask {
     display: block;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -36,6 +36,7 @@
     display: block;
     content: "";
     background-image: url(http://oss.xinliyoushu.com/assets/images/agreement_dec.png);
+    background-size: 100% 100%;
     width: 2.99rem /* 224/75 */;
     height: 2.79rem /* 209/75 */;
     margin: auto

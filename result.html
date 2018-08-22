@@ -26,7 +26,6 @@
         // let url = 'https://story.cuppieme.com.cn/index';
         let url = 'https://www.easy-mock.com/mock/5b7cd4ebc00f650b09885966/test';
         $.get(url + '/story_no', function (res) {
-            debugger
             if (res.code === 200) {
                 $('#number').html(res.data)
             }

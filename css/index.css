@@ -68,6 +68,7 @@ html,body{
     background-repeat: no-repeat;
     background-size: 100% 100%;
     overflow: scroll !important;
+    position: relative;
 }
 
 .form-text{
