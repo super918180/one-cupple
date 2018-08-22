@@ -115,6 +115,7 @@
             }
         });
         $('.arrow-down').click(function () {
+            isUp = true;
             $('.page1').css('top', '-100%');
             $('.page2').css('top', '0');
         })
@@ -122,7 +123,7 @@
         getNumber()
     });
 
-    function getNumber(){
+    function getNumber() {
         let url = 'https://story.cuppieme.com.cn/index';
         $.get(url + '/story_no', function (res) {
             if (res.code === 200) {
@@ -252,10 +253,11 @@
                 x = Number(touch.pageX), //页面触点X坐标
                 y = Number(touch.pageY); //页面触点Y坐标
             //判断滑动方向
-            if (y - startY > 0) {
+            if (y - startY > 50) {
                 console.log('下滑了！');
                 isUp = false;
-            } else {
+            }
+            if (startY - y > 50) {
                 console.log('上滑了！');
                 isUp = true;
             }
