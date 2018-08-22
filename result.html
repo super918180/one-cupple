@@ -14,7 +14,7 @@
         <img class="center-img success" src="./images/page4/success.png" alt="">
         <div class="center-img success-text">存入成功!</div>
         <div class="center-img success-number">
-            你是第<span id="number" class="success-value">8888</span>个存入故事的人<br />欢迎到CUPPIEME线下门店体验故事柜员机
+            你是第<span id="number" class="success-value"></span>个存入故事的人<br />欢迎到CUPPIEME线下门店体验故事柜员机
         </div>
         <img class="center-img logo" src="./images/page4/store.png" alt="">
         <img class="center-img logo2" src="./images/page4/one-cupple.png" alt="">
@@ -23,7 +23,9 @@
 <script src="./js/lib/zepto.min.js"></script>
 <script>
     $(function () {
-        $.get('https://story.cuppieme.com.cn/index/story_no', function (response) {
+        // let url = 'https://story.cuppieme.com.cn/index';
+        let url = 'https://www.easy-mock.com/mock/5b7cd4ebc00f650b09885966/test';
+        $.get(url + '/story_no', function (res) {
             debugger
             if (res.code === 200) {
                 $('#number').html(res.data)

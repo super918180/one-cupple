@@ -16,13 +16,14 @@
 <body>
     <div class="wp">
         <div class="wp-inner">
-            <!-- <div class="page page1">
+            <div class="page page1">
+                <img class="page1-light" src="./images/page1/light.png" alt="">
                 <img class="center-img bank-of-cupple" src="./images/page1/bank-of-cupple.png" alt="">
                 <img class="center-img story-bank" src="./images/page1/story-bank.png" alt="">
                 <img class="center-img story-text" src="./images/page1/story-text.png" alt="">
                 <img class="center-img one-cupple" src="./images/page1/one-cupple.png" alt="">
                 <img class="center-img arrow-down" src="./images/page1/arrow-down.png" alt="">
-            </div> -->
+            </div>
             <div class="page page2">
                 <div class="center-img form-text">
                     <div class="center-img form-detail">
@@ -110,6 +111,9 @@
                 xingbie = txt;
             }
         });
+        $('.arrow-down').click(function () {
+            $('.wp-inner').css({ transform: 'translate3d(0px, -' + document.body.offsetHeight + 'px, 0px);' })
+        })
     });
 
     function submit() {
@@ -132,15 +136,17 @@
         });
         var data = getValue();
         try {
-            $.post('https://story.cuppieme.com.cn/index/record', {
+            // let url = 'https://story.cuppieme.com.cn/index';
+            let url = 'https://www.easy-mock.com/mock/5b7cd4ebc00f650b09885966/test';
+            $.post(url + '/record', {
                 nickname: data.name,
                 city: data.city,
                 constellation: data.xinzuo,
                 sex: data.xingbie,
                 content: data.story
-            }, function (response) {
+            }, function (res) {
                 if (res.code === 200) {
-                    // todo
+                    location.href = './result.html'
                 } else {
                     $(document).dialog({
                         type: 'notice',
@@ -156,7 +162,6 @@
                 autoClose: 2500
             });
         }
-        location.href = './result.html'
     }
     function checkValue() {
         var data = getValue();
