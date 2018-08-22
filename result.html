@@ -23,12 +23,8 @@
 <script src="./js/lib/zepto.min.js"></script>
 <script>
     $(function () {
-        let url = 'https://story.cuppieme.com.cn/index';
-        $.get(url + '/story_no', function (res) {
-            if (res.code === 200) {
-                $('#number').html(res.data)
-            }
-        })
+        var number = location.href.split('?id')[1];
+        $('#number').html(number)
     })
 </script>
 

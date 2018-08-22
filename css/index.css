@@ -93,9 +93,16 @@ html,body{
     height: 13.25rem /* 994/75 */;
 }
 .form-detail{
-    margin-top: 4.13rem /* 310/75 */;
+    margin-top: 2.27rem /* 170/75 */;
     width: 6.93rem /* 520/75 */;
     padding: .4rem /* 30/75 */ .2rem /* 15/75 */;
+}
+#number{
+    margin-left: .93rem /* 70/75 */;
+    font-size: .43rem /* 32/75 */;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 1.33rem /* 100/75 */;
 }
 .form-input{
     width: 6.93rem /* 520/75 */;

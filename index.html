@@ -27,6 +27,7 @@
         <div class="page page2">
             <div class="center-img form-text">
                 <div class="center-img form-detail">
+                    <div id="number"></div>
                     <textarea id="story" class="center-img form-input" name="" id="" cols="30" rows="10" placeholder='故事请从这里写起。如果你想和读到故事的人成为朋友，可以在末尾留下你的联系方式。'></textarea>
                     <div class="form-item">
                         <div class="item-left">
@@ -117,7 +118,18 @@
             $('.page1').css('top', '-100%');
             $('.page2').css('top', '0');
         })
+
+        getNumber()
     });
+
+    function getNumber(){
+        let url = 'https://story.cuppieme.com.cn/index';
+        $.get(url + '/story_no', function (res) {
+            if (res.code === 200) {
+                $('#number').html(res.data)
+            }
+        })
+    }
 
     function submit() {
         if (checkValue()) {
@@ -148,7 +160,8 @@
                 content: data.story
             }, function (res) {
                 if (res.code === 200) {
-                    location.href = './result.html'
+                    debugger;
+                    location.href = './result.html?id=' + res.data
                 } else {
                     drop();
                     $(document).dialog({

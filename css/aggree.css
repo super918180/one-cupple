@@ -8,7 +8,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,.8);
+    background: linear-gradient(#000032,#6d1497);
 }
 
 .g-modal-mask:before {
@@ -27,19 +27,22 @@
 
 .g-modal-mask .m-protocol-window .wrap {
     position: relative;
-    background-color: #151829;
+    background-color:#fff;
     width: 8.93rem /* 670/75 */;
     height: 11.47rem /* 860/75 */
 }
-
-.g-modal-mask .m-protocol-window .wrap:before {
-    display: block;
-    content: "";
-    background-image: url(http://oss.xinliyoushu.com/assets/images/agreement_dec.png);
-    background-size: 100% 100%;
-    width: 2.99rem /* 224/75 */;
-    height: 2.79rem /* 209/75 */;
-    margin: auto
+.m-protocol-header{
+    margin-bottom: .8rem /* 60/75 */;
+}
+.header-group{
+    padding-top: .27rem /* 20/75 */;
+    width: 7.47rem /* 560/75 */;
+	height: .12rem /* 9/75 */;
+}
+.header-logo{
+    width: 2.8rem /* 210/75 */;
+    height: .8rem /* 60/75 */;
+    padding-top: .53rem /* 40/75 */;
 }
 
 .g-modal-mask .m-protocol-window .wrap .m-protocol-scroll {
@@ -56,7 +59,7 @@
 }
 
 .g-modal-mask .m-protocol-window .wrap .m-protocol-scroll p {
-    color: #fff;
+    color: #333333;
     font-family: Avenir,Helvetica,Arial,sans-serif;
     font-size: .29rem /* 22/75 */;
     margin: .27rem /* 20/75 */ 0;
