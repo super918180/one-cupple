@@ -70,27 +70,13 @@
 }
 
 .g-modal-mask .m-agree-btn {
+    width: 4rem /* 300/75 */;
+	height: 1.2rem /* 90/75 */;
+	background-color: #e52c34;
+    border-radius: .03rem /* 2/75 */;
+    color: #ffffff;
+    font-size: .4rem /* 30/75 */;
+    text-align: center;
     line-height: 1.2rem /* 90/75 */;
-    background-color: transparent;
-    background-size: contain;
-    background-position: 50%;
-    font-size: .43rem /* 32/75 */;
-    color: #fff;
-    text-indent: .08rem /* 6/75 */;
-    letter-spacing: .08rem /* 6/75 */;
-    border-radius: .13rem /* 10/75 */;
-    font-weight: 500;
-    outline: none;
-    border: none;
-    margin: .45rem /* 34/75 */ auto
-}
-
-.g-modal-mask .btn2,.g-modal-mask .m-agree-btn {
-    width: 3.73rem /* 280/75 */;
-    height: 1.2rem /* 90/75 */;
-    background-repeat: no-repeat
-}
-
-.g-modal-mask .btn2 {
-    background-image: url(http://oss.xinliyoushu.com/assets/images/btn2.png)
+    margin: .53rem /* 40/75 */ auto;
 }

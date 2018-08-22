@@ -160,7 +160,6 @@
                 content: data.story
             }, function (res) {
                 if (res.code === 200) {
-                    debugger;
                     location.href = './result.html?id=' + res.data
                 } else {
                     drop();
