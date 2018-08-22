@@ -1,0 +1,91 @@
+.txc {
+    text-align: center;
+}
+.g-modal-mask {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.8);
+}
+
+.g-modal-mask:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle
+}
+
+.g-modal-mask .m-protocol-window {
+    display: inline-block;
+    vertical-align: middle;
+    width: 8.93rem /* 670/75 */;
+    height: 13.33rem /* 1000/75 */
+}
+
+.g-modal-mask .m-protocol-window .wrap {
+    position: relative;
+    background-color: #151829;
+    width: 8.93rem /* 670/75 */;
+    height: 11.47rem /* 860/75 */
+}
+
+.g-modal-mask .m-protocol-window .wrap:before {
+    display: block;
+    content: "";
+    background-image: url(http://oss.xinliyoushu.com/assets/images/agreement_dec.png);
+    width: 2.99rem /* 224/75 */;
+    height: 2.79rem /* 209/75 */;
+    margin: auto
+}
+
+.g-modal-mask .m-protocol-window .wrap .m-protocol-scroll {
+    width: 7.47rem /* 560/75 */;
+    height: 8rem /* 600/75 */;
+    margin: auto;
+    overflow: auto;
+    text-align: left;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.g-modal-mask .m-protocol-window .wrap .m-protocol-scroll p {
+    color: #fff;
+    font-family: Avenir,Helvetica,Arial,sans-serif;
+    font-size: .29rem /* 22/75 */;
+    margin: .27rem /* 20/75 */ 0;
+}
+
+.g-modal-mask .m-protocol-window .wrap .m-protocol-scroll p:not(.txc) {
+    text-indent: 2em
+}
+
+.g-modal-mask .m-agree-btn {
+    line-height: 1.2rem /* 90/75 */;
+    background-color: transparent;
+    background-size: contain;
+    background-position: 50%;
+    font-size: .43rem /* 32/75 */;
+    color: #fff;
+    text-indent: .08rem /* 6/75 */;
+    letter-spacing: .08rem /* 6/75 */;
+    border-radius: .13rem /* 10/75 */;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    margin: .45rem /* 34/75 */ auto
+}
+
+.g-modal-mask .btn2,.g-modal-mask .m-agree-btn {
+    width: 3.73rem /* 280/75 */;
+    height: 1.2rem /* 90/75 */;
+    background-repeat: no-repeat
+}
+
+.g-modal-mask .btn2 {
+    background-image: url(http://oss.xinliyoushu.com/assets/images/btn2.png)
+}

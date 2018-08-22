@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./js/lib/fullpage/zepto.fullpage.css">
     <link rel="stylesheet" href="./js/lib/select/select.css">
     <link rel="stylesheet" href="./js/lib/dialog/dialog.css">
+    <link rel="stylesheet" href="./css/aggree.css">
     <script src="./js/lib/flexible.js"></script>
     <title>故事银行</title>
 </head>
@@ -15,17 +16,17 @@
 <body>
     <div class="wp">
         <div class="wp-inner">
-            <div class="page page1">
+            <!-- <div class="page page1">
                 <img class="center-img bank-of-cupple" src="./images/page1/bank-of-cupple.png" alt="">
                 <img class="center-img story-bank" src="./images/page1/story-bank.png" alt="">
                 <img class="center-img story-text" src="./images/page1/story-text.png" alt="">
                 <img class="center-img one-cupple" src="./images/page1/one-cupple.png" alt="">
                 <img class="center-img arrow-down" src="./images/page1/arrow-down.png" alt="">
-            </div>
+            </div> -->
             <div class="page page2">
                 <div class="center-img form-text">
                     <div class="center-img form-detail">
-                        <textarea id="story" class="center-img form-input" name="" id="" cols="30" rows="10" placeholder='默认文字'></textarea>
+                        <textarea id="story" class="center-img form-input" name="" id="" cols="30" rows="10" placeholder='故事请从这里写起。如果你想和读到故事的人成为朋友，可以在末尾留下你的联系方式。'></textarea>
                         <div class="form-item">
                             <div class="item-left">
                                 <div class="item-tag">昵称</div>
@@ -69,7 +70,7 @@
                 <div class="center-img submit" onclick="submit()">提交故事</div>
                 <div class="center-img aggree">
                     <img class="aggree-img" src="./images/page2/pressed.png" alt="">
-                    <div class="aggree-text">我已阅读并同意《用户协议》</div>
+                    <div class="aggree-text" onclick="aggressShow()">我已阅读并同意《用户协议》</div>
                 </div>
                 <div id="confirm" class="center-img confirm">
                     <div class="confirm-header">确定要存入故事吗？</div>
@@ -77,6 +78,9 @@
                         <div class="confirm-footer-left" onclick="drop()">返回修改</div>
                         <div class="confirm-footer-right" onclick="saveStory()">确认存入</div>
                     </div>
+                </div>
+                <div id="modal-aggree">
+
                 </div>
             </div>
         </div>
@@ -109,13 +113,14 @@
     });
 
     function submit() {
-        // if (checkValue()) {
-        //    $('#confirm').show();
-        // }
-        $('#confirm').show();
-        $('.page2').scrollTo({ toT: 1000 })
+        if (checkValue()) {
+            $('.submit').addClass('submit-disable');
+            $('#confirm').show();
+            $('.page2').scrollTo({ toT: 1000 })
+        }
     }
     function drop() {
+        $('.submit').removeClass('submit-disable');
         $('.page2').scrollTo({ toT: 0 })
         $('#confirm').hide();
     }
@@ -155,27 +160,28 @@
     }
     function checkValue() {
         var data = getValue();
+        var text = '';
         if (!data.story) {
-            alert('请填写您的故事')
-            return false;
+            text = '内容不能为空哦';
+        } else if (!data.name) {
+            text = '昵称不能为空哦';
+        } else if (!data.city) {
+            text = '城市不能为空哦';
+        } else if (!data.xinzuo) {
+            text = '星座不能为空哦';
+        } else if (!data.xingbie) {
+            text = '性别不能为空哦';
         }
-        if (!data.name) {
-            alert('请填写您的昵称')
-            return false;
+        if (text) {
+            $(document).dialog({
+                type: 'notice',
+                infoText: text,
+                autoClose: 2500
+            });
+            return false
+        } else {
+            return true
         }
-        if (!data.city) {
-            alert('请填写您的城市')
-            return false;
-        }
-        if (!data.xinzuo) {
-            alert('请选择您的星座')
-            return false;
-        }
-        if (!data.xingbie) {
-            alert('请填写您的性别')
-            return false;
-        }
-        return true;
     }
 
     function getValue() {
@@ -189,6 +195,13 @@
             xinzuo: xinzuo,
             xingbie: xingbie
         }
+    }
+    function aggressShow() {
+        $('#modal-aggree').load('./aggree.html', function () {
+            $('#close-modal').click(function () {
+                $('#modal-aggree').empty();
+            })
+        })
     }
 </script>
 

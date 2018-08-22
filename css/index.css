@@ -5,6 +5,8 @@
 html,body{
     height: 100%;
     overflow: hidden;
+    font-family: Avenir,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 .wp{
     height: 100%;
@@ -132,6 +134,9 @@ html,body{
     text-align: center;
     color: #ffffff;
 }
+.submit-disable{
+    color: rgba(255, 255, 255, 0.5)
+}
 .aggree{
     margin-top: .53rem /* 40/75 */;
     display: flex;
@@ -183,6 +188,11 @@ html,body{
 	height: 1.2rem /* 90/75 */;
 	background-color: #e52c34;
 	border-radius: .03rem /* 2/75 */;
+}
+
+.modal-aggree{
+    width: 670px;
+    height: 1000px;
 }
 
 .page4{
