@@ -102,7 +102,7 @@
         startY = 0,
         isUp = false;
     var isAggree = true;
-    $(document).ready(function () {
+    $(function () {
         // $('.wp-inner').fullpage();
         bindEvent();
         var select1 = new Select();
@@ -137,7 +137,6 @@
                 $(this).attr('src', selectImg)
             }
         })
-
         getNumber()
     });
 
@@ -256,6 +255,8 @@
     function aggressShow() {
         $('#modal-aggree').load('./aggree.html', function () {
             $('#close-modal').click(function () {
+                isAggree = true;
+                $('.aggree-img').attr("src", './images/page2/pressed.png');
                 $('#modal-aggree').empty();
             })
         })
