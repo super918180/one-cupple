@@ -95,10 +95,10 @@ html,body{
     background-size: 100% 100%;
     overflow: hidden;
     width: 8.27rem /* 620/75 */;
-    height: 72vh;
+    height: 12.8rem /* 960/75 */;
 }
 .form-detail{
-    margin-top: 11.8vh;
+    margin-top: 2.13rem /* 160/75 */;
     width: 6.93rem /* 520/75 */;
     padding: .4rem /* 30/75 */ .2rem /* 15/75 */;
 }
@@ -111,7 +111,7 @@ html,body{
 }
 .form-input{
     width: 6.93rem /* 520/75 */;
-    height: 22.5vh;
+    height: 4.13rem /* 310/75 */;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
 	background-color: #f2f2f2;
@@ -120,7 +120,7 @@ html,body{
     font-size: .32rem /* 24/75 */;
     color: #333333;
     padding: .27rem /* 20/75 */;
-    margin-bottom: 1vh;
+    margin-bottom: .13rem /* 10/75 */;
 }
 .form-item{
     display: -webkit-box;
