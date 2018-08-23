@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="./js/lib/select/select.css">
     <link rel="stylesheet" href="./js/lib/dialog/dialog.css">
     <link rel="stylesheet" href="./css/aggree.css">
-    <script src="./js/lib/flexible.js"></script>
     <title>故事银行</title>
+    <script src="./js/lib/flexible.js"></script>
+    <script type=text/javascript src=http://res.wx.qq.com/open/js/jweixin-1.2.0.js></script>
 </head>
 
 <body>
     <div class="wp">
-
-
+        <img src="./images/logo.png" style="width: 300px;height: 300px;display: none" alt="">
         <div class="page page1">
             <img class="page1-light" src="./images/page1/light.png" alt="">
             <img class="center-img bank-of-cupple" src="./images/page1/bank-of-cupple.png" alt="">
@@ -139,7 +139,8 @@
                 $(this).attr('src', selectImg)
             }
         })
-        getNumber()
+        getNumber();
+        // setWxShare();
     });
 
     function getNumber() {
@@ -149,6 +150,33 @@
                 $('#number').html(res.data)
             }
         })
+    }
+
+    function setWxShare() {
+        e = { "debug": false, "appId": "wxf3fd33f021f5bee8", "timestamp": "1535020050", "nonceStr": "3tc1x863p49", "signature": "64d43c5ffe33445ba625843e0187f1b76d5960d7", "jsApiList": ["onMenuShareTimeline", "onMenuShareAppMessage"], "ok": false },
+            wx.config(e),
+            wx.ready(function () {
+                wx.checkJsApi({
+                    jsApiList: ["onMenuShareTimeline"],
+                    success: function (t) { }
+                }),
+                    wx.onMenuShareTimeline({
+                        title: "这台故事贩卖机，还缺一个你的故事",
+                        link: "http://beihuan.xinliyoushu.com/pages/story?v=" + Date.now(),
+                        imgUrl: "http://oss.xinliyoushu.com/shareImg.png",
+                        success: function (t) { },
+                        cancel: function (t) { }
+                    }),
+                    wx.onMenuShareAppMessage({
+                        title: "这台故事贩卖机，还缺一个你的故事",
+                        link: "http://beihuan.xinliyoushu.com/pages/story?v=" + Date.now(),
+                        desc: "来杯欢制茶，带走一个故事",
+                        imgUrl: "http://oss.xinliyoushu.com/shareImg.png",
+                        success: function (t) { },
+                        cancel: function (t) { }
+                    })
+            }),
+            wx.error(function (t) { });
     }
 
     function submit() {
