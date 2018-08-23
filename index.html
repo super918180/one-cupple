@@ -28,7 +28,7 @@
             <div class="center-img form-text">
                 <div class="center-img form-detail">
                     <div id="number"></div>
-                    <textarea id="story" class="center-img form-input" name="" id="" cols="30" rows="10" placeholder='故事请从这里写起。如果你想和读到故事的人成为朋友，可以在末尾留下你的联系方式。'></textarea>
+                    <textarea id="story" class="center-img form-input" name="" id="" cols="30" rows="10" placeholder='故事从这里开始，长度在5-500字之间。'></textarea>
                     <div class="form-item">
                         <div class="item-left">
                             <div class="item-tag">昵称</div>
@@ -64,6 +64,7 @@
                                 <option value="0" selected="selected">请选择</option>
                                 <option value="1">男</option>
                                 <option value="2">女</option>
+                                <option value="2">X</option>
                             </select>
                         </div>
                     </div>
@@ -72,7 +73,7 @@
             <div class="center-img submit" onclick="submit()">提交故事</div>
             <div class="center-img aggree">
                 <img class="aggree-img" src="./images/page2/pressed.png" alt="">
-                <div class="aggree-text" onclick="aggressShow()">我已阅读并同意《用户协议》</div>
+                <div class="aggree-text">我已阅读并同意<span id="aggree-click" onclick="aggressShow()">《用户协议》</span></div>
             </div>
             <div id="confirm" class="center-img confirm">
                 <div class="confirm-header">确定要存入故事吗？</div>
@@ -97,6 +98,7 @@
     var startX = 0,
         startY = 0,
         isUp = false;
+    var isAggree = true;
     $(document).ready(function () {
         // $('.wp-inner').fullpage();
         bindEvent();
@@ -118,6 +120,19 @@
             isUp = true;
             $('.page1').css('top', '-100%');
             $('.page2').css('top', '0');
+        })
+
+        $('.aggree-img').click(function () {
+            var attr = $(this).attr('src');
+            var selectImg = './images/page2/pressed.png';
+            var unSelectImg = './images/page2/unpressed.png';
+            if (attr === selectImg) {
+                isAggree = false;
+                $(this).attr('src', unSelectImg)
+            } else {
+                isAggree = true;
+                $(this).attr('src', selectImg)
+            }
         })
 
         getNumber()
@@ -182,7 +197,9 @@
     function checkValue() {
         var data = getValue();
         var text = '';
-        if (!data.story) {
+        if (!isAggree) {
+            text = '您提交故事前须阅读并同意用户协议';
+        } else if (!data.story) {
             text = '内容不能为空哦';
         } else if (!data.name) {
             text = '昵称不能为空哦';
@@ -273,6 +290,7 @@
         } else {
             $('.page1').css('top', '0');
             $('.page2').css('top', '100%');
+            $('.ui-select').hide();
         }
     }
 

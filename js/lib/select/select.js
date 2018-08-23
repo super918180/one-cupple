@@ -178,7 +178,7 @@
 			});
 			$(document).click(function () {
 				_this.hide();
-			})
+			});
 		},
 		show: function () {
 			this.settings.beforeShow && this.settings.beforeShow.call(this, this.trigger, this.target);
