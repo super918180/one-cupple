@@ -25,65 +25,68 @@
             <img class="center-img arrow-down" src="./images/page1/arrow-down.png" alt="">
         </div>
         <div class="page page2">
-            <div class="center-img form-text">
-                <div class="center-img form-detail">
-                    <div id="number"></div>
-                    <textarea id="story" class="center-img form-input" name="" id="" cols="30" rows="10" placeholder='故事从这里开始，长度在5-500字之间。'></textarea>
-                    <div class="form-item">
-                        <div class="item-left">
-                            <div class="item-tag">昵称</div>
-                            <input id="name" class="item-input" type="text" />
+            <div class="page2-content">
+                <div class="center-img form-text">
+                    <div class="center-img form-detail">
+                        <div id="number"></div>
+                        <textarea id="story" class="center-img form-input" name="" id="" cols="30" rows="10" placeholder='故事从这里开始，长度在5-500字之间。'></textarea>
+                        <div class="form-item">
+                            <div class="item-left">
+                                <div class="item-tag">昵称</div>
+                                <input id="name" class="item-input" type="text" />
+                            </div>
+                            <div class="item-right">
+                                <div class="item-tag">城市</div>
+                                <input id="city" class="item-input" type="text" />
+                            </div>
                         </div>
-                        <div class="item-right">
-                            <div class="item-tag">城市</div>
-                            <input id="city" class="item-input" type="text" />
-                        </div>
-                    </div>
-                    <div class="form-item">
-                        <div class="item-left">
-                            <div class="item-tag">星座</div>
-                            <select name="select" class="item-select" id="select1">
-                                <option value="0" selected="selected">请选择</option>
-                                <option value="1">魔羯座</option>
-                                <option value="2">水瓶座</option>
-                                <option value="3">双鱼座</option>
-                                <option value="4">白羊座</option>
-                                <option value="5">金牛座</option>
-                                <option value="6">双子座</option>
-                                <option value="7">巨蟹座</option>
-                                <option value="8">狮子座</option>
-                                <option value="9">处女座</option>
-                                <option value="10">天秤座</option>
-                                <option value="11">天蝎座</option>
-                                <option value="12">射手座</option>
-                            </select>
-                        </div>
-                        <div class="item-right">
-                            <div class="item-tag">性别</div>
-                            <select name="select" class="item-select" id="select2">
-                                <option value="0" selected="selected">请选择</option>
-                                <option value="1">男</option>
-                                <option value="2">女</option>
-                                <option value="2">X</option>
-                            </select>
+                        <div class="form-item">
+                            <div class="item-left">
+                                <div class="item-tag">星座</div>
+                                <select name="select" class="item-select" id="select1">
+                                    <option value="0" selected="selected">请选择</option>
+                                    <option value="1">魔羯座</option>
+                                    <option value="2">水瓶座</option>
+                                    <option value="3">双鱼座</option>
+                                    <option value="4">白羊座</option>
+                                    <option value="5">金牛座</option>
+                                    <option value="6">双子座</option>
+                                    <option value="7">巨蟹座</option>
+                                    <option value="8">狮子座</option>
+                                    <option value="9">处女座</option>
+                                    <option value="10">天秤座</option>
+                                    <option value="11">天蝎座</option>
+                                    <option value="12">射手座</option>
+                                </select>
+                            </div>
+                            <div class="item-right">
+                                <div class="item-tag">性别</div>
+                                <select name="select" class="item-select" id="select2">
+                                    <option value="0" selected="selected">请选择</option>
+                                    <option value="1">男</option>
+                                    <option value="2">女</option>
+                                    <option value="2">X</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="center-img submit" onclick="submit()">提交故事</div>
-            <div class="center-img aggree">
-                <img class="aggree-img" src="./images/page2/pressed.png" alt="">
-                <div class="aggree-text">我已阅读并同意<span id="aggree-click" onclick="aggressShow()">《用户协议》</span></div>
-            </div>
-            <div id="confirm" class="center-img confirm">
-                <div class="confirm-header">确定要存入故事吗？</div>
-                <div class="confirm-footer">
-                    <div class="confirm-footer-left" onclick="drop()">返回修改</div>
-                    <div class="confirm-footer-right" onclick="saveStory()">确认存入</div>
+                <div class="center-img submit" onclick="submit()">提交故事</div>
+                <div class="center-img aggree">
+                    <img class="aggree-img" src="./images/page2/pressed.png" alt="">
+                    <div class="aggree-text">我已阅读并同意<span id="aggree-click" onclick="aggressShow()">《用户协议》</span></div>
                 </div>
-            </div>
-            <div id="modal-aggree">
-
+                <div id="modal-confirm"></div>
+                <div id="modal-aggree"></div>
+                <div id="result" class="page4">
+                    <img class="center-img success" src="./images/page4/success.png" alt="">
+                    <div class="center-img success-text">存入成功!</div>
+                    <div class="center-img success-number">
+                        你是第<span class="success-value"></span>个存入故事的人<br />欢迎到CUPPIEME线下门店体验故事柜员机
+                    </div>
+                    <img class="center-img logo" src="./images/page4/store.png" alt="">
+                    <img class="center-img logo2" src="./images/page4/one-cupple.png" alt="">
+                </div>
             </div>
         </div>
     </div>
@@ -149,21 +152,33 @@
 
     function submit() {
         if (checkValue()) {
-            $('.submit').addClass('submit-disable');
-            $('#confirm').show();
-            $('.page2').scrollTo({ toT: 1000 })
+            $('#modal-confirm').load('./alert.html', function () {
+                setTimeout(function () {
+                    $('#confirm').css({ transform: 'scale(1)' });
+                }, 200);
+                $('.confirm-footer-left').click(function () {
+                    drop();
+                })
+                $('.confirm-footer-right').click(function () {
+                    saveStory();
+                })
+            })
         }
     }
     function drop() {
-        $('.submit').removeClass('submit-disable');
-        $('.page2').scrollTo({ toT: 0 })
-        $('#confirm').hide();
+        setTimeout(function () {
+            $('#confirm').css({ transform: 'scale(0)' });
+        }, 200);
+        $('#confirm').css({ transform: 'scale(0)' });
+        setTimeout(function () {
+            $('#modal-confirm').empty();
+        }, 700);
     }
     function saveStory() {
         $(document).dialog({
             type: 'notice',
             content: '<img class="info-icon" src="./images/loading.gif" alt="" /><span class="info-text">正在提交中</span>',
-            autoClose: 2500
+            autoClose: 1000
         });
         var data = getValue();
         try {
@@ -176,7 +191,10 @@
                 content: data.story
             }, function (res) {
                 if (res.code === 200) {
-                    location.href = './result.html?id=' + res.data
+                    $('.success-value').html(res.data)
+                    setTimeout(function () {
+                        $('#result').show().css('top', '0');
+                    }, 200);
                 } else {
                     drop();
                     $(document).dialog({
