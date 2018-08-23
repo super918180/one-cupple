@@ -293,6 +293,10 @@ html,body{
     color: #ffffff;
     text-align: center;
 }
+.success-number a{
+    color: #ffffff;
+    text-decoration: underline;
+}
 .success-value{
     font-size: .64rem /* 48/75 */;
 }
