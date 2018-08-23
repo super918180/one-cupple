@@ -192,8 +192,9 @@
             }, function (res) {
                 if (res.code === 200) {
                     $('.success-value').html(res.data)
+                    $('#result').show()
                     setTimeout(function () {
-                        $('#result').show().css('top', '0');
+                        $('#result').css('top', '0');
                     }, 200);
                 } else {
                     drop();
