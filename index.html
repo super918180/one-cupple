@@ -102,6 +102,7 @@
         startY = 0,
         isUp = false;
     var isAggree = true;
+    var stopScroll = false;
     $(function () {
         // $('.wp-inner').fullpage();
         bindEvent();
@@ -194,6 +195,7 @@
                     $('#result').show()
                     setTimeout(function () {
                         $('#result').css('top', '0');
+                        stopScroll = true;
                     }, 200);
                 } else {
                     drop();
@@ -283,6 +285,9 @@
             return false;
         }
         if ($(evt.target).parents().hasClass('g-modal-mask')) {
+            return false;
+        }
+        if (stopScroll) {
             return false;
         }
         try {
