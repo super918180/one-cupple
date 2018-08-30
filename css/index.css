@@ -112,6 +112,8 @@ html,body{
 .form-input{
     width: 6.93rem /* 520/75 */;
     height: 4.13rem /* 310/75 */;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
 	background-color: #f2f2f2;
@@ -286,6 +288,7 @@ html,body{
     font-size: .48rem /* 36/75 */;
     text-align: center;
     color: #f2f2f2;
+    font-weight: bold;
 }
 .success-number{
     margin-top: .93rem /* 70/75 */;
@@ -296,9 +299,11 @@ html,body{
 .success-number a{
     color: #ffffff;
     text-decoration: underline;
+    font-weight: bold;
 }
 .success-value{
     font-size: .64rem /* 48/75 */;
+    line-height: 1.5rem;
 }
 .logo{
     margin-top: 18% /* 240/75 */;

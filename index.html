@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="./js/lib/select/select.css">
     <link rel="stylesheet" href="./js/lib/dialog/dialog.css">
     <link rel="stylesheet" href="./css/aggree.css">
-    <title>故事银行</title>
+    <title>欢迎光顾故事银行</title>
+    <meta name=description content="把故事存入这里，通过线下门店分享给等你的陌生人">
     <script src="./js/lib/flexible.js"></script>
-    <script type=text/javascript src=http://res.wx.qq.com/open/js/jweixin-1.2.0.js></script>
+    <script type=text/javascript src=https://res.wx.qq.com/open/js/jweixin-1.2.0.js></script>
 </head>
 
 <body>
@@ -29,7 +30,7 @@
                 <div class="center-img form-text">
                     <div class="center-img form-detail">
                         <div id="number"></div>
-                        <textarea id="story" class="center-img form-input" name="" id="" cols="30" rows="10" placeholder='故事从这里开始，长度在5-500字之间。'></textarea>
+                        <textarea id="story" class="center-img form-input" name="" id="" cols="30" rows="10" placeholder='故事从这里开始，长度在5-500字之间。' maxlength="500"></textarea>
                         <div class="form-item">
                             <div class="item-left">
                                 <div class="item-tag">昵称</div>
@@ -65,7 +66,7 @@
                                     <option value="0" selected="selected">请选择</option>
                                     <option value="1">男</option>
                                     <option value="2">女</option>
-                                    <option value="2">X</option>
+                                    <option value="3">X</option>
                                 </select>
                             </div>
                         </div>
@@ -82,7 +83,7 @@
                     <img class="center-img success" src="./images/page4/success.png" alt="">
                     <div class="center-img success-text">存入成功!</div>
                     <div class="center-img success-number">
-                        你是第<span class="success-value"></span>个存入故事的人<br />欢迎到CUPPIEME<a href="http://www.dianping.com/shop/111863906">线下门店</a>体验故事柜员机
+                        你是第<span class="success-value"></span>个存入故事的人<br />现在可前往<a href="http://www.dianping.com/shop/111863906">线下门店</a>通过故事柜员机领取一个故事
                     </div>
                     <img class="center-img logo" src="./images/page4/store.png" alt="">
                     <img class="center-img logo2" src="./images/page4/one-cupple.png" alt="">
@@ -140,43 +141,38 @@
             }
         })
         getNumber();
-        // setWxShare();
+
     });
 
     function getNumber() {
-        let url = 'https://story.cuppieme.com.cn/index';
-        $.get(url + '/story_no', function (res) {
+        let url = '/index';
+        $.get(url + '/story_no' + location.search, function (res) {
             if (res.code === 200) {
-                $('#number').html(res.data)
+                $('#number').html(res.data.story_no);
+                setWxShare(res.data.sign);
             }
         })
     }
 
-    function setWxShare() {
-        e = { "debug": false, "appId": "wxf3fd33f021f5bee8", "timestamp": "1535020050", "nonceStr": "3tc1x863p49", "signature": "64d43c5ffe33445ba625843e0187f1b76d5960d7", "jsApiList": ["onMenuShareTimeline", "onMenuShareAppMessage"], "ok": false },
-            wx.config(e),
-            wx.ready(function () {
-                wx.checkJsApi({
-                    jsApiList: ["onMenuShareTimeline"],
-                    success: function (t) { }
-                }),
-                    wx.onMenuShareTimeline({
-                        title: "这台故事贩卖机，还缺一个你的故事",
-                        link: "http://beihuan.xinliyoushu.com/pages/story?v=" + Date.now(),
-                        imgUrl: "http://oss.xinliyoushu.com/shareImg.png",
-                        success: function (t) { },
-                        cancel: function (t) { }
-                    }),
-                    wx.onMenuShareAppMessage({
-                        title: "这台故事贩卖机，还缺一个你的故事",
-                        link: "http://beihuan.xinliyoushu.com/pages/story?v=" + Date.now(),
-                        desc: "来杯欢制茶，带走一个故事",
-                        imgUrl: "http://oss.xinliyoushu.com/shareImg.png",
-                        success: function (t) { },
-                        cancel: function (t) { }
-                    })
-            }),
-            wx.error(function (t) { });
+    function setWxShare(sign) {
+        wx.config(sign);
+        wx.ready(function () {
+            var shareData1 = {
+                title: '把故事变成别人手里的温度',  //标题
+                desc: '把逆流的时光存进故事银行通过线下门店分享给一个读懂你的人',//简介
+                link: window.location.href,
+                imgUrl: 'https://story.cuppieme.com.cn/static/image/share-img2.png'
+            };
+            var shareData2 = {
+                title: '故事银行|把故事变成别人手里的温度',  //标题
+                desc: '把逆流的时光存进故事银行通过线下门店分享给一个读懂你的人',//简介
+                link: window.location.href,
+                imgUrl: 'https://story.cuppieme.com.cn/static/image/share-img2.png'
+            };
+            wx.onMenuShareAppMessage(shareData1);
+            wx.onMenuShareTimeline(shareData2);
+            wx.onMenuShareQQ(shareData1);
+        });
     }
 
     function submit() {
@@ -309,7 +305,7 @@
     function touchMove(evt) {
         console.log(evt.target.className)
         const targetClass = evt.target.className;
-        const disableClass = ['ui-select-item', 'ui-select-item ui-select-item-selected'];
+        const disableClass = ['ui-select-item', 'ui-select-item ui-select-item-selected', 'center-img form-input'];
         if (disableClass.includes(targetClass) || $(evt.target).parents().hasClass('g-modal-mask') || stopScroll) {
 
         } else {
@@ -348,7 +344,7 @@
     //绑定事件
     function bindEvent() {
         document.addEventListener('touchmove', function (evt) {
-            if ($(evt.target).parents().hasClass('page2') && !$(evt.target).parents().hasClass('m-protocol-scroll')) {
+            if ($(evt.target).parents().hasClass('page2') && !$(evt.target).parents().hasClass('m-protocol-scroll') && !$(evt.target).hasClass('form-input')) {
                 evt.preventDefault();
             }
         })
